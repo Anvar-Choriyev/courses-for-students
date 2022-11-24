@@ -1,0 +1,89 @@
+:root {
+  --main-color: #3751FF;
+  --primary-text-color: #9FA2B4;
+  --secondary-color: #363740;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+html,body{
+  height: 100vh;
+}
+body {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+.invalid {
+  border-color: red;
+}
+.error-text {
+  color: red;
+  font-size: 1rem;
+}
+#root {
+  height: 100%;
+  position: relative;
+}
+nav {
+  padding: 1rem 2rem;
+  height: 4rem;
+  background-color: rgb(245, 243, 243);
+  display: flex;
+  justify-content: space-between;
+}
+nav img {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+form {
+  width: 80%;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+input {
+  border: 1px solid #F0F1F7;
+  background-color: #FCFDFE;
+  width: 50%;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  display: block;
+  margin: 0 auto;
+}
+textarea {
+  width: 50%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+form button {
+  width: 50%;
+  border-radius: 0.5rem;
+  box-shadow: 0px 4px 12px rgba(55, 81, 255, 0.24);
+  padding: 1rem 5rem;
+  background-color: #3751FF;
+  border: 1px solid transparent;
+  color: #fff;
+  cursor: pointer;
+}
+
+.form-control {
+  margin: 10px 300px;
+  width: 200px;
+  height: 180px;
+  background-color: antiquewhite;
+}
+.img-input {
+  display: none;
+}
+.img-label {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.img-label img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

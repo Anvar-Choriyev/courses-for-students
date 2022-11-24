@@ -1,0 +1,50 @@
+.link {
+    text-decoration: none;
+    color: #fff;
+    background-color: rgb(13, 13, 56);
+    width: 4rem;
+    height: 2.5rem;
+    display: block;
+    border-radius: 0.3rem;
+    padding-top: 0.5rem;
+}
+.links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+.container {
+    display: flex;
+    justify-content: end;
+}
+.title {
+    max-width: 3rem;
+}
+.main {
+    width: 95%;
+}
+nav {
+    display: flex;
+    align-items: center;
+}
+nav img {
+    border-radius: 50%;
+}
+.logout {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: rgb(15, 168, 196);
+    border: none;
+    padding: 0.2rem 1.5rem;
+    border-radius: 0.3rem;
+}
+.rightSide {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    width: 35%;
+}
+.rightSide button {
+    cursor: pointer;
+}

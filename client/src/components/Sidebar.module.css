@@ -1,0 +1,36 @@
+.link {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    gap: 2rem;
+    text-decoration: none;
+}
+.link:hover, .bars:hover{
+    background-color: green;
+    color: #fff;
+    transition: all 0.5s;
+}
+.active {
+    background-color: green;
+    color: #000;
+}
+.bars {
+    text-align: left;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+}
+.sidebar {
+    width: 12rem;
+    height: calc(100vh - 4rem);
+    background-color: rgb(245, 243, 243);
+    position: absolute;
+    left: 0;
+}
+.icons {
+    width: 4rem;
+    height: calc(100vh - 4rem);
+    background-color: rgb(245, 243, 243);
+    position: absolute;
+    overflow: hidden;
+    left: 0;
+}

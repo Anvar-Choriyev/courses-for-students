@@ -1,0 +1,70 @@
+.container {
+    width: 25rem;
+    height: 30rem;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    margin: 0 auto;
+    padding: 1rem 0;
+}
+.main {
+    height: 100vh;
+    background-color: rgba(5, 100, 26, 0.459);
+    padding: 2rem 0;
+}
+.logo img {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+}
+.dashboardText {
+    font-size: 1.7rem;
+    letter-spacing: 0.03rem;
+    color: #A4A6B3;
+    opacity: 0.7;
+    padding: 1rem 0;
+}
+h2 {
+    font-size: 1.8rem;
+    padding: 0.5rem 0;
+}
+.description {
+    font-size: 1.1rem;
+    letter-spacing: 0.03rem;
+    padding: 0.5rem 0;
+    color: var(--primary-text-color);
+}
+.username {
+    text-align: left;
+    font-size: 0.8rem;
+    letter-spacing: 0.03rem;
+    text-transform: uppercase;
+    color: var(--primary-text-color);
+}
+.password {
+    text-align: left;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+input::placeholder {
+    letter-spacing: 0.03rem;
+    color: #4B506D;
+    opacity: 0.4;
+}
+span {
+    font-size: 0.8rem;
+    color: var(--primary-text-color);
+    letter-spacing: 0.03rem;
+}
+.register {
+    margin: 1rem 0;
+}
+.link {
+    padding: 0 1rem;
+    text-decoration: none;
+    letter-spacing: 0.03rem;
+    color: var(--main-color);
+    font-size: 1.2rem;
+}
+.login input, .login button {
+    width: 100%;
+}
