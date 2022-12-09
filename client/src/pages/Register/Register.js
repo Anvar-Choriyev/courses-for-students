@@ -17,9 +17,8 @@ const Register = () => {
             localStorage.setItem("token", res.data.data.jwt)
             localStorage.setItem("user", JSON.stringify(res.data.data))
             dispatch(appActions.register(res.data.data))
-            navigate(`/auth/email-verification/${res.data.data.id}`)
+            navigate("/auth/login")
         } catch (error) {
-            console.log(error);
             toast.error(error.response.data.message)
         }
     }

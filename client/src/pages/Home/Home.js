@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import Layout from "../../components/Layout";
 import styles from "./Home.module.css"
-import {useNavigate} from "react-router-dom"
-import Sidebar from "../../components/Sidebar";
  
 const Home = () => {
     const verifyStorage = localStorage.getItem("isAuth")
@@ -18,10 +16,10 @@ const Home = () => {
             {verifyStorage ? 
                 <>
                     <div className={styles.link}>
-                        <Link to="/courses">Subjects</Link>
+                        <Link to="/subjects">Subjects</Link>
                     </div>
                     <div className={styles.link}>
-                        <Link to="/students">Teachers</Link>
+                        <Link to="/teachers">Teachers</Link>
                     </div>
                     {verifyAdmin && <div className={styles.link}>
                         <Link to="/users">Admins</Link>

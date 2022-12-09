@@ -5,24 +5,10 @@ const {Op} = require("sequelize")
 const QueryBuilder = require("../utils/QueryBuilder")
 
 exports.getUsers = catchAsync(async(req, res, next) => {
-    // const {page = 1, size, search} = req.query;
-    // const allUsers = await Users.findAndCountAll({
-    //     offset: (page - 1) * size || 0,
-    //     limit: size,
-    //     where : search && {
-    //         userRole: {[Op.eq]: "ADMIN"},
-    //         [Op.or]: [
-    //             {firstName: {[Op.iLike]: `%${search}%`}},
-    //             {lastName: {[Op.iLike]: `%${search}%`}},
-    //             {email: {[Op.iLike]: `%${search}%`}}
-    //         ]
-    //     }
-    // })
-    // allUsers.totalPages = Math.ceil(allUsers.count / size) || 1
     const queryBuilder = new QueryBuilder(req.query)
 
     queryBuilder
-        // .filter()
+        .filter()
         .paginate()
         .limitFields()
         .search(["firstName", "lastName", "email"])
@@ -30,7 +16,6 @@ exports.getUsers = catchAsync(async(req, res, next) => {
 
     let allUsers = await Users.findAndCountAll(queryBuilder.queryOptions)
     allUsers = queryBuilder.createPage(allUsers)
-    console.log(queryBuilder)
     if(!allUsers) {
         return next(new AppError("Users list is empty", 404))
     }
@@ -41,14 +26,6 @@ exports.getUsers = catchAsync(async(req, res, next) => {
         data: {
             allUsers
         }
-        // pagination: {
-        //     allPagesCount: allUsers.totalPages,
-        //     totalItems: allUsers.count,
-        //     isLastPage: allUsers.totalPages === +page,
-        //     isFirstPage: (+page - 1) === 0,
-        //     hasNextPage: allUsers.totalPages > +page,
-        //     page: page || 1
-        // }
     })
 })
 exports.getById = catchAsync(async(req, res, next) => {

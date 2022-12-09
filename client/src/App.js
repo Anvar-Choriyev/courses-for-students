@@ -1,19 +1,23 @@
 import {Routes, Route} from "react-router-dom"
-import Courses from "./pages/Courses/Courses";
+import Subjects from "./pages/Subjects/Subjects";
 import './App.css';
 import Home from "./pages/Home/Home";
-import CoursesAddEdit from "./pages/CoursesAddEdit/CoursesAddEdit";
+import SubjectsAddEdit from "./pages/Subjects/SubjectsAddEdit";
 import { ToastContainer } from "react-toastify";
-import StudentsAddEdit from "./pages/StudentsAddEdit/StudentsAddEdit";
-import Students from "./pages/Students/Students";
-import CourseStudents from "./pages/courseStudents/CourseStudents";
+import TeachersAddEdit from "./pages/Teachers/TeachersAddEdit";
+import Teachers from "./pages/Teachers/Teachers";
+import SubjectTeachers from "./pages/SubjectTeachers/SubjectTeachers";
 import Login from "./pages/Login/Login";
 import { useSelector } from "react-redux";
 import Register from "./pages/Register/Register";
-import Verification from "./pages/Verification";
-import VerificationCheck from "./pages/VerificationCheck";
 import Admins from "./pages/Admins/Admins";
 import EditAdmin from "./pages/Admins/EditAdmin";
+import Articles from "../src/pages/Articles/Articles";
+import ArticlesAddEdit from "./pages/Articles/ArticlesAddEdit";
+import Literatures from "./pages/Literatures/Literatures";
+import LiteraturesAddEdit from "./pages/Literatures/LiteraturesAddEdit";
+import Certificates from "./pages/Certificates/Certificates";
+import CertificatesAddEdit from "./pages/Certificates/CertificatesAddEdit";
 
 function App() {
   const isAuth = useSelector(st=>st.app.isAuth)
@@ -25,13 +29,20 @@ function App() {
         <Route path="/" element={<Home/>} />
         <Route path="/auth/login" element={<Login/>}/>
         <Route path="/auth/register" element={<Register/>}/>
-        {isAuth&&<Route path="/courses" element={<Courses/>} />}
-        {isAuth&&<Route path="/students" element={<Students/>} />}
-        <Route path="/courses/:id" element={<CoursesAddEdit/>} />
-        <Route path="/courses/:id/students" element={<CourseStudents/>}/>
-        <Route path="/students/:id" element={<StudentsAddEdit/>} />
-        <Route path="/auth/verify/:id" element={<Verification/>} />
-        <Route path="/auth/email-verification/:id" element={<VerificationCheck/>} />
+        {isAuth&&<Route path="/subjects" element={<Subjects/>} />}
+        {isAuth&&<Route path="/teachers" element={<Teachers/>} />}
+        {isAuth&&<Route path="/articles" element={<Articles/>} />}
+        {isAuth&&<Route path="/literatures" element={<Literatures/>} />}
+        {isAuth&&<Route path="/certificates" element={<Certificates/>} />}
+        <Route path="/subjects/:id" element={<SubjectsAddEdit/>} />
+        <Route path="/subjects/:id/teachers" element={<SubjectTeachers/>}/>
+        <Route path="/teachers/:id" element={<TeachersAddEdit/>} />
+        <Route path="/articles/:id" element={<ArticlesAddEdit/>} />
+        <Route path="/articles/:id/teachers" element={<SubjectTeachers/>} />
+        <Route path="/literatures/:id" element={<LiteraturesAddEdit/>} />
+        <Route path="/literatures/:id/teachers" element={<SubjectTeachers/>} />
+        <Route path="/certificates/:id" element={<CertificatesAddEdit/>} />
+        <Route path="/certificates/:id/teachers" element={<SubjectTeachers/>} />
         <Route path="/users" element={<Admins/>}/>
         <Route path="/users/:id" element={<EditAdmin/>}/>
       </Routes>

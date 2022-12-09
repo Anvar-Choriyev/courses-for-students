@@ -1,22 +1,22 @@
-const Courses = require("../models/Courses")
+const Subjects = require("../models/Subjects")
 const AppError = require("../utils/appError")
 const catchAsync = require("../utils/catchAsync")
 const {validationResult} = require("express-validator")
 const {Op} = require("sequelize")
 const QueryBuilder = require("../utils/QueryBuilder")
 
-exports.getAllCourses = catchAsync(async(req, res, next) => {
+exports.getAllSubjects = catchAsync(async(req, res, next) => {
     const queryBuilder = new QueryBuilder(req.query)
 
     queryBuilder
-        // .filter()
+        .filter()
         .paginate()
         .limitFields()
         .search(["name", "description"])
         .order()
         
-    let allCourses = await Courses.findAndCountAll(queryBuilder.queryOptions)
-    allCourses = queryBuilder.createPage(allCourses)
+    let allSubjects = await Subjects.findAndCountAll(queryBuilder.queryOptions)
+    allSubjects = queryBuilder.createPage(allSubjects)
 
     // const {page = 1, size = 3} = req.query
     // const allCourses = await Courses.findAndCountAll({
@@ -30,10 +30,10 @@ exports.getAllCourses = catchAsync(async(req, res, next) => {
     // }
     res.json({
         status: "success",
-        message: "All courses",
+        message: "All subjects",
         error: null,
         data: {
-            allCourses
+            allSubjects
         },
         // pagination: {
         //     allPages: allCourses.totalPages,
@@ -46,7 +46,7 @@ exports.getAllCourses = catchAsync(async(req, res, next) => {
     })
 })
 
-exports.createCourse = catchAsync(async(req, res, next) => {
+exports.createSubject = catchAsync(async(req, res, next) => {
     const validationErrors = validationResult(req)
     if(!validationErrors.isEmpty()) {
         const err = new AppError("Validation error", 400)
@@ -55,35 +55,35 @@ exports.createCourse = catchAsync(async(req, res, next) => {
         err.isOperational = false
         return next(err)
     }
-    const newCourse = await Courses.create(req.body)
+    const newSubject = await Subjects.create(req.body)
 
     res.status(201).json({
         status: "success",
         message: "Subject created",
         error: null,
         data: {
-            newCourse
+            newSubject
         }
     })
 })
 
 exports.getById = catchAsync(async(req, res, next) => {
     const {id} = req.params
-    const courseById = await Courses.findByPk(id)
-    if(!courseById) {
-        return next(new AppError(`Category with ID ${id} not found`, 404))
+    const subjectById = await Subjects.findByPk(id)
+    if(!subjectById) {
+        return next(new AppError(`Subject with ID ${id} not found`, 404))
     }
     res.json({
         status: "success",
         message: "Selected subject",
         error: null,
         data: {
-            courseById
+            subjectById
         }
     })
 })
 
-exports.updateCourse = catchAsync(async(req, res, next) => {
+exports.updateSubject = catchAsync(async(req, res, next) => {
     const validationErrors = validationResult(req)
     if(!validationErrors.isEmpty()) {
         const err = new AppError("Validation error", 400)
@@ -93,28 +93,28 @@ exports.updateCourse = catchAsync(async(req, res, next) => {
         return next(err)
     }
     const {id} = req.params
-    const courseById = await Courses.findByPk(id)
-    if(!courseById) {
-        return next(new AppError(`Category with ID ${id} not found`, 404))
+    const subjectById = await Subjects.findByPk(id)
+    if(!subjectById) {
+        return next(new AppError(`Subject with ID ${id} not found`, 404))
     }
-    const updatedCourse = await courseById.update(req.body)
+    const updatedSubject = await subjectById.update(req.body)
     res.json({
         status: "success",
         message: "Subject updated",
         error: null,
         data: {
-            updatedCourse
+            updatedSubject
         }
     })
 })
 
-exports.deleteCourse = catchAsync(async(req, res, next) => {
+exports.deleteSubject = catchAsync(async(req, res, next) => {
     const {id} = req.params
-    const courseById = await Courses.findByPk(id)
-    if(!courseById) {
-        return next(new AppError(`Category with ID ${id} not found`, 404))
+    const subjectById = await Subjects.findByPk(id)
+    if(!subjectById) {
+        return next(new AppError(`Subject with ID ${id} not found`, 404))
     }
-    await courseById.destroy()
+    await subjectById.destroy()
     res.status(204).json({
         status: "success",
         message: "Subject deleted",
@@ -123,15 +123,15 @@ exports.deleteCourse = catchAsync(async(req, res, next) => {
     })
 })
 
-exports.getStudentsFromCourse = catchAsync(async(req, res, next) => {
-    const byIdStudents = await Courses.findOne({
+exports.getTeachersFromSubject = catchAsync(async(req, res, next) => {
+    const byIdTeachers = await Subjects.findOne({
         where: {id: {[Op.eq]: req.params.id}},
         include: [
-            "students"
+            "teachers"
         ]
     })
-    if(!byIdStudents){
-        const err = new AppError("bunday Idli subject topilmadi", 404)
+    if(!byIdTeachers){
+        const err = new AppError("bunday Id li o'qituvchi topilmadi", 404)
         return next(err)
     }
 
@@ -140,7 +140,7 @@ exports.getStudentsFromCourse = catchAsync(async(req, res, next) => {
         message: "Subject by id",
         error: null,
         data: {
-            byIdStudents
+            byIdTeachers
         }
     })
 })

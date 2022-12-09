@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
-import ImageForm from "../../components/ImageForm";
 import Layout from "../../components/Layout";
 import Pagination from "../../components/Pagination";
 import Table from "../../components/Table";

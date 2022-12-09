@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form";
-import Layout from "../../components/Layout";
 import { useNavigate } from "react-router-dom";
 import {useDispatch} from "react-redux"
 import axios from "axios"
@@ -22,7 +21,7 @@ const Login = () => {
             localStorage.setItem("userRole", JSON.stringify(res.data.data.user.role))
             localStorage.setItem("isAuth", true)
             dispatch(appActions.login(res.data.data))
-            navigate("/courses")
+            navigate("/subjects")
         } catch (error) {
             toast.error(error.response.data.message)
         }

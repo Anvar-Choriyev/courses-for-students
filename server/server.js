@@ -1,8 +1,11 @@
 require("dotenv").config()
 const database = require("./config/database/database")
 const app = require("./app")
-require("./models/Courses")
-require("./models/Students")
+require("./models/Subjects")
+require("./models/Teachers")
+require("./models/Articles")
+require("./models/Literatures")
+require("./models/Certificates")
 require("./models/Users")
 require("./models/Attachments")
 
