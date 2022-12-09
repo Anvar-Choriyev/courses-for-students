@@ -37,14 +37,6 @@ const Users = sequelize.define("users", {
         type: DataTypes.STRING,
         allowNull: false
     },
-    verificationCode: {
-        type: DataTypes.STRING,
-        // defaultValue: b,
-    },
-    isVerified : {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false
-    },
     userRole: {
         type: DataTypes.ENUM(Object.values(userRole)),
         allowNull: false,

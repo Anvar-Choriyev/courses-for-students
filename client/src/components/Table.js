@@ -1,7 +1,7 @@
 import styles from "./Table.module.css"
 import {BiSortAlt2} from "react-icons/bi"
 import { useNavigate } from "react-router-dom"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 const Table = ({cols, data}) => {
     const [value, setValue] = useState()

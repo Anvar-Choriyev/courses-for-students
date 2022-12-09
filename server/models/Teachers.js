@@ -2,7 +2,7 @@ const {DataTypes} = require("sequelize")
 const sequelize = require("../config/database/database")
 const Attachments = require("./Attachments")
 
-const Students = sequelize.define("students", {
+const Teachers = sequelize.define("teachers", {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -16,13 +16,21 @@ const Students = sequelize.define("students", {
         type: DataTypes.STRING,
         allowNull: false
     },
-    birthDate: {
-        type: DataTypes.DATEONLY,
+    patronymic: {
+        type: DataTypes.STRING,
         allowNull: false
     },
+    phoneNumber: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    address: {
+        type: DataTypes.STRING,
+        allowNull: false
+    }
 }, {underscored: true})
 
-    Attachments.hasOne(Students, {as: "attachments"})
-    Students.belongsTo(Attachments)
+    Attachments.hasOne(Teachers, {as: "attachments"})
+    Teachers.belongsTo(Attachments)
 
-module.exports = Students
+module.exports = Teachers

@@ -3,7 +3,7 @@ import {RiDashboardFill} from "react-icons/ri"
 import {FaBars} from "react-icons/fa"
 import {SiCoursera} from "react-icons/si"
 import {AiOutlineEdit, AiOutlineIdcard, AiOutlineUser} from "react-icons/ai"
-import { NavLink, Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import { useState } from "react"
 
 const Sidebar = () => {
@@ -20,27 +20,31 @@ const Sidebar = () => {
             icon: <RiDashboardFill/>
         },
         {
-            path: "/courses",
-            name: "Subjects",
+            path: "/subjects",
+            name: "Fanlar",
             icon: <SiCoursera/>
         },
         {
-            path: "/students",
-            name: "Teachers",
+            path: "/teachers",
+            name: "O'qituvchilar",
             icon: <AiOutlineIdcard/>
         },
         {
-            path: "/courses/:id",
-            name: "Edit Subjects",
+            path: "/articles",
+            name: "Maqolalar",
             icon: <AiOutlineEdit/>
         },
         {
-            path: "/students/:id",
-            name: "Edit Teachers",
+            path: "/literatures",
+            name: "Adabiyotlar",
+            icon: <AiOutlineEdit/>
+        },
+        {
+            path: "/certificates",
+            name: "Guvohnomalar",
             icon: <AiOutlineEdit/>
         },
     ]
-    console.log(menuItem);
     return ( 
         <div className={styles.container}>
             <div className={isOpen ? styles.icons : styles.sidebar}>

@@ -21,9 +21,9 @@ const Layout = params => {
             <img src={img1} alt="logo"/>
             <h2>Computer Ingineering</h2>
             <div className={styles.links}>
-                <Link className={styles.link} to={"/courses"}>Subjects</Link>
+                <Link className={styles.link} to={"/subjects"}>Subjects</Link>
                 <Link className={styles.link} to={"/"}>Home</Link>
-                <Link className={styles.link} to={"/students"}>Teachers</Link>
+                <Link className={styles.link} to={"/teachers"}>Teachers</Link>
             </div>
             <Navbar title={params.title}/>
             <div className={styles.rightSide}>
