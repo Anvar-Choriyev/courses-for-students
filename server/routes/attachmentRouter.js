@@ -4,6 +4,6 @@ const attachmentController = require("../controllers/attachmentController")
 
 const router = express.Router()
 
-router.post("/", upload.single("avatar"), attachmentController.create)
+router.post("/",upload.single("avatar"),attachmentController.create)
 
 module.exports = router

@@ -1,5 +1,6 @@
 const express = require("express")
 const {body} = require("express-validator")
+const upload = require("../config/middlewares/uploadMiddleware")
 const subjectController = require("../controllers/subjectController")
 
 const router = express.Router()
@@ -7,7 +8,7 @@ const router = express.Router()
 router
     .route("/")
     .get(subjectController.getAllSubjects)
-    .post(body("name", "Name cannot be empty").notEmpty(), subjectController.createSubject)
+    .post(upload.single("avatar"),subjectController.createSubject)
 router
     .route("/:id")
     .get(subjectController.getById)

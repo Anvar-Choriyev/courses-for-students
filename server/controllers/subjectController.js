@@ -4,6 +4,7 @@ const catchAsync = require("../utils/catchAsync")
 const {validationResult} = require("express-validator")
 const {Op} = require("sequelize")
 const QueryBuilder = require("../utils/QueryBuilder")
+const Attachments = require("../models/Attachments")
 
 exports.getAllSubjects = catchAsync(async(req, res, next) => {
     const queryBuilder = new QueryBuilder(req.query)
@@ -18,16 +19,6 @@ exports.getAllSubjects = catchAsync(async(req, res, next) => {
     let allSubjects = await Subjects.findAndCountAll(queryBuilder.queryOptions)
     allSubjects = queryBuilder.createPage(allSubjects)
 
-    // const {page = 1, size = 3} = req.query
-    // const allCourses = await Courses.findAndCountAll({
-    //     offset: (page - 1) * size,
-    //     limit: size
-    // })
-    // allCourses.totalPages = Math.ceil(allCourses.count / size)
-    // if(!(page <= allCourses.totalPages) || !(size <= allCourses.count)) {
-    //     return next(new AppError(`Required informations (page:${page},
-    //         size of informations: ${size})`))
-    // }
     res.json({
         status: "success",
         message: "All subjects",
@@ -35,14 +26,6 @@ exports.getAllSubjects = catchAsync(async(req, res, next) => {
         data: {
             allSubjects
         },
-        // pagination: {
-        //     allPages: allCourses.totalPages,
-        //     totalItems: allCourses.count,
-        //     isLastPage: allCourses.totalPages === +page,
-        //     isFirstPage: (+page - 1) === 0,
-        //     hasNextPage: allCourses.totalPages > +page,
-        //     page: page||1
-        // }
     })
 })
 
@@ -56,7 +39,6 @@ exports.createSubject = catchAsync(async(req, res, next) => {
         return next(err)
     }
     const newSubject = await Subjects.create(req.body)
-
     res.status(201).json({
         status: "success",
         message: "Subject created",
@@ -142,5 +124,23 @@ exports.getTeachersFromSubject = catchAsync(async(req, res, next) => {
         data: {
             byIdTeachers
         }
+    })
+})
+
+exports.createPresentation = catchAsync(async(req, res, next) => {
+    const presentationObj = {
+        name: req.file.filename,
+        originalName: req.file.originalname,
+        size: req.file.size,
+        type: req.file.originalname.slice(+req.file.originalname.lastIndexOf(".")+1)
+    }
+    const newPresentation = await Attachments.create(presentationObj)
+    res.status(201).json({
+        status: "success",
+        message: "",
+        error: null,
+        data: {
+            newPresentation
+        }        
     })
 })

@@ -1,22 +1,10 @@
 import styles from "./Table.module.css"
-import {BiSortAlt2} from "react-icons/bi"
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 
 const Table = ({cols, data}) => {
     const [value, setValue] = useState()
     const navigate = useNavigate()
-    // useEffect(() => {
-    //     const timer = setTimeout(() => {
-    //         navigate(`/users?search=${value === null ? "" : value}`)
-    //     }, 200)
-    //     return () => {
-    //         clearTimeout(timer)
-    //     }
-    // }, [value])
-    // useEffect(() => {
-    //     navigate(`/users?order=${value}`)
-    // }, [value])
 
     const changeHandler = e => {
         setValue(e.target.value)
@@ -43,7 +31,6 @@ const Table = ({cols, data}) => {
                     key={c.header}>
                         <div className={styles.header}>
                             {c.header}
-                            {c.header !== "Actions"?<BiSortAlt2 onClick={changeHandler} value={c.header}/>:""}
                         </div>
                             </th>
                 )}

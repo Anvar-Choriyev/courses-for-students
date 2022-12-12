@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Layout from "../../components/Layout";
 import styles from "./Home.module.css"
+import ImageForm from "../../components/ImageForm";
  
 const Home = () => {
     const verifyStorage = localStorage.getItem("isAuth")
@@ -33,6 +34,7 @@ const Home = () => {
         </div>
             </div>
         </div>
+        <ImageForm/>
         </Layout>
         </> 
     );

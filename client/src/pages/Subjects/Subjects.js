@@ -57,7 +57,6 @@ const Subjects = () => {
         {!error&&!loading&&data&&<Table cols={subjectCols} data={data}  />}
         <Pagination route={`subjects`} pagination={pagination} size={size} page={page}
             />
-            {/* <ImageForm/> */}
         </div>
         </Layout>
         </>
