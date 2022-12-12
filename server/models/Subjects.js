@@ -1,6 +1,7 @@
 const {DataTypes} = require("sequelize")
 const sequelize = require("../config/database/database")
 const Teachers = require("./Teachers")
+const Attachments = require("./Attachments")
 
 const Subjects = sequelize.define("subjects", {
     id: {
@@ -10,27 +11,30 @@ const Subjects = sequelize.define("subjects", {
     },
     name: {
         type: DataTypes.STRING,
-        allowNull: false
+        // allowNull: false
     },
     lecture: {
         type: DataTypes.STRING,
-        allowNull: false
+        // allowNull: false
     },
     presentation: {
         type: DataTypes.STRING,
-        allowNull: false
+        // allowNull: false
     },
     syllabus: {
         type: DataTypes.STRING,
-        allowNull: false
+        // allowNull: false
     },
     literature: {
         type: DataTypes.STRING,
-        allowNull: false
+        // allowNull: false
     }
 }, {underscored: true})
 
 Subjects.hasMany(Teachers, {as: "teachers"})
 Teachers.belongsTo(Subjects)
+
+Attachments.hasOne(Subjects, {as: "attachments"})
+Subjects.belongsTo(Attachments)
 
 module.exports = Subjects

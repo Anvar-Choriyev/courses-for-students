@@ -18,25 +18,10 @@ const SubjectTeachers = () => {
 
     useEffect(()=>{
         getTeachers()
-        getArticles()
-        getLiteratures()
-        getCertificates()
     },[])
 
     const getTeachers = useCallback(async () => {
         const res = await axios.get(`http://localhost:8080/api/v1/subjects/${id}/teachers`)
-        setSelectedTeachers(res.data.data.byIdTeachers.teachers)    
-    })
-    const getArticles = useCallback(async () => {
-        const res = await axios.get(`http://localhost:8080/api/v1/articles/${id}/teachers`)
-        setSelectedTeachers(res.data.data.byIdTeachers.teachers)    
-    })
-    const getLiteratures = useCallback(async () => {
-        const res = await axios.get(`http://localhost:8080/api/v1/literatures/${id}/teachers`)
-        setSelectedTeachers(res.data.data.byIdTeachers.teachers)    
-    })
-    const getCertificates = useCallback(async () => {
-        const res = await axios.get(`http://localhost:8080/api/v1/certificates/${id}/teachers`)
         setSelectedTeachers(res.data.data.byIdTeachers.teachers)    
     })
     const deleteHandler = async (id) => {

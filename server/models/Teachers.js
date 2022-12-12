@@ -30,7 +30,4 @@ const Teachers = sequelize.define("teachers", {
     }
 }, {underscored: true})
 
-    Attachments.hasOne(Teachers, {as: "attachments"})
-    Teachers.belongsTo(Attachments)
-
 module.exports = Teachers

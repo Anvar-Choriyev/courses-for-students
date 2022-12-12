@@ -10,6 +10,7 @@ import { getAllSubjects} from "./subjects-api"
 import { useSearchParams, useNavigate, Link} from "react-router-dom"
 import {FaRegEdit} from "react-icons/fa"
 import {AiOutlineDelete} from "react-icons/ai"
+import http from "../../utils/axios-instance"
 
 const Subjects = () => {
     const [params] = useSearchParams()
@@ -31,6 +32,23 @@ const Subjects = () => {
         }
         send({page,size})
     }
+    const getFile = async () => {
+        http({
+          url: "subjects/download",
+          method: "GET",
+          responseType: "blob",
+        }).then(res => {
+          const href = URL.createObjectURL(res.data);
+          const link = document.createElement("a");
+          link.href = href;
+          link.setAttribute("download", "subjects.xlsx");
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          URL.revokeObjectURL(href);
+        });
+      };
+
     const subjectCols = [
         {header: "Nomi", accessor: (item)=> <Link to={`/subjects/${item.id}/teachers`}>{item.name}</Link>},
         {header: "Ma'ruza", accessor: "lecture"},
@@ -49,6 +67,7 @@ const Subjects = () => {
         <>
         <Layout title="Fanlar">
         <div className={styles.container}>
+        <button onClick={getFile}>Download</button>
         <Link to="/subjects/new">
             Fan qo'shish
         </Link>
@@ -57,7 +76,6 @@ const Subjects = () => {
         {!error&&!loading&&data&&<Table cols={subjectCols} data={data}  />}
         <Pagination route={`subjects`} pagination={pagination} size={size} page={page}
             />
-            {/* <ImageForm/> */}
         </div>
         </Layout>
         </>

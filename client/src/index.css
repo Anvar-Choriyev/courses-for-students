@@ -67,24 +67,3 @@ form button {
   color: #fff;
   cursor: pointer;
 }
-
-.form-control {
-  margin: 10px 300px;
-  width: 200px;
-  height: 180px;
-  background-color: antiquewhite;
-}
-.img-input {
-  display: none;
-}
-.img-label {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.img-label img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}

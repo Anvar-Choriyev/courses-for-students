@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import Layout from "../../components/Layout";
 import useHttp from "../../utils/hooks/use-http";
 import { getAllSubjects, submit } from "./subjects-api";
+import ImageForm from "../../components/ImageForm";
 
 const SubjectsAddEdit = () => {
     const {register, handleSubmit, formState: {errors, isDirty}, reset} = useForm()
@@ -54,10 +55,7 @@ const SubjectsAddEdit = () => {
                 <br/>
                 {errors.lecture&&<span className="error-text">{errors.lecture.message}</span>}
                 <br/>
-                <input className={errors.name? "invalid": ""} type="text" placeholder="Presentatsiya"
-                {...register("presentation", {required: {value: true, message: "Presentatsiya kiritilmadi"}})}/>
-                <br/>
-                {errors.presentation&&<span className="error-text">{errors.presentation.message}</span>}
+                <ImageForm/>
                 <br/>
                 <input className={errors.name? "invalid": ""} type="text" placeholder="Sillabus"
                 {...register("syllabus", {required: {value: true, message: "Sillabus kiritilmadi"}})}/>
