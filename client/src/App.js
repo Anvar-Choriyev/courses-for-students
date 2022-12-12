@@ -38,11 +38,8 @@ function App() {
         <Route path="/subjects/:id/teachers" element={<SubjectTeachers/>}/>
         <Route path="/teachers/:id" element={<TeachersAddEdit/>} />
         <Route path="/articles/:id" element={<ArticlesAddEdit/>} />
-        <Route path="/articles/:id/teachers" element={<SubjectTeachers/>} />
         <Route path="/literatures/:id" element={<LiteraturesAddEdit/>} />
-        <Route path="/literatures/:id/teachers" element={<SubjectTeachers/>} />
         <Route path="/certificates/:id" element={<CertificatesAddEdit/>} />
-        <Route path="/certificates/:id/teachers" element={<SubjectTeachers/>} />
         <Route path="/users" element={<Admins/>}/>
         <Route path="/users/:id" element={<EditAdmin/>}/>
       </Routes>

@@ -5,15 +5,12 @@ const ImageForm = () => {
 
   const [file, setFile] = useState()  
   const [progress, setProgress] = useState(0)  
-  const submitHandler = async data => {
-
-    //Post to students
-    // ({
-    //     ...data,
-    //     avatarId: file.id,
-    // })
-  };
-  const fileHandler = async (e) => {
+  const submitHandler = async data => 
+    ({
+        ...data,
+        attachmentId: file.id,
+    })
+  const fileHandler = async (e, id) => {
     const file = e.target.files[0];
     const formData = new FormData();
     formData.append("avatar", file);
@@ -36,11 +33,6 @@ const ImageForm = () => {
     <>
       <form onSubmit={submitHandler}>
         <div className="form-control">
-          <label htmlFor="avatar" className="img-label">
-            {file&& <img src={`http://localhost:8080/${file.name}`} />}
-            {!file&&"Choose your image"}
-            {progress>0&&` ${progress}%`}
-          </label>
           <input
             className="img-input"
             type="file"
@@ -48,7 +40,6 @@ const ImageForm = () => {
             onChange={fileHandler}
           />
         </div>
-        <button>Save</button>
       </form>
     </>
   );

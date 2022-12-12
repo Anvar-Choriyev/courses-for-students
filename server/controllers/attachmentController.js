@@ -1,8 +1,8 @@
 const Attachments = require("../models/Attachments")
+const Subjects = require("../models/Subjects")
 const catchAsync = require("../utils/catchAsync")
 
 exports.create = catchAsync(async(req, res, next) => {
-
     const avatarObj = {
         name: req.file.filename,
         originalName: req.file.originalname,
