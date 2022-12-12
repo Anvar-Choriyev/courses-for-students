@@ -5,6 +5,9 @@
     gap: 2rem;
     text-decoration: none;
 }
+.link:nth-child(1){
+    color: red !important;
+}
 .link:hover, .bars:hover{
     background-color: green;
     color: #fff;
@@ -20,7 +23,7 @@
     cursor: pointer;
 }
 .sidebar {
-    width: 12rem;
+    width: 15%;
     height: calc(100vh - 4rem);
     background-color: rgb(245, 243, 243);
     position: absolute;

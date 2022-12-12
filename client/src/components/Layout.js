@@ -10,7 +10,6 @@ import { useNavigate } from "react-router-dom";
 
 const Layout = params => {
     const navigate = useNavigate()
-
     const logoutHandler = () => {
         navigate("/auth/login")
         window.location.reload()

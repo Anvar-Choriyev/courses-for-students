@@ -38,3 +38,18 @@
     margin:15px 0;
     width: 100%;
 }
+.button{
+    text-align: center;
+    width: 100%;
+}
+.error-text{
+    font-size: 10px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+@media (max-width:1360px) and (min-width:1024px) {
+    .formFill{
+        width: 70%;
+    }
+}

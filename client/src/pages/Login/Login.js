@@ -6,7 +6,7 @@ import { appActions } from "../../store";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import styles from "./Login.module.css"
-import img1 from "../../images/course-logo.png"
+import img1 from "../../images/tuiticon.png"
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors, isDirty }, reset } = useForm()
@@ -34,7 +34,6 @@ const Login = () => {
                         <img src={img1} alt="Login logo" />
                     </div>
                     <p className={styles.dashboardText}>Computer Ingineering</p>
-                    <h2>Log In to TUIT Cathedra</h2>
                     <form onSubmit={handleSubmit(loginHandler)} className={styles.login}>
                         <p className={styles.username}>Username</p>
                         <input className={errors.name ? "invalid" : ""} type="text" placeholder="Username"

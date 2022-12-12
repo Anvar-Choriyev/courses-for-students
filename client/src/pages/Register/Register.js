@@ -62,7 +62,7 @@ const Register = () => {
                             minLength: { value: 8, message: "Username mustn't be less than 8" }
                         })} />
                     {errors.password && <span className="error-text">{errors.password.message}</span>}
-                    <button>Register</button>
+                    <button className={styles.button}>Register</button>
                 </form>
             </div>
             </div>
