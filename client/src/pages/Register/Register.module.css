@@ -1,5 +1,40 @@
 .main {
-    padding: 1rem 0;
+    box-sizing: border-box;
     height: 100vh;
-    background-color: rgb(70, 134, 45);
+    display: flex;
+    justify-content: space-between;
+}
+
+.left {
+    background-image: url('../../images/home-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    object-fit: cover;
+    width: 50%;
+    height: 100vh;
+    
+}
+.right{
+    display: flex;
+    width: 50%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+.formFill{
+    width: 50%;
+    padding: 20px;
+    border-radius: 10px;
+    opacity: 0.99;
+    box-shadow:5px 5px 10px rgb(172, 164, 164),
+             -5px -5px 10px rgb(172, 164, 164);
+    background-color: darkgrey;
+}
+.formFill form{
+    width: 100%;
+}
+.formFill form input{
+    margin:15px 0;
+    width: 100%;
 }
