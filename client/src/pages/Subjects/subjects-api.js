@@ -20,5 +20,6 @@ export const submit = async ({data, isUpdate, id}) => {
         method: isUpdate ? "PATCH" : "POST",
         data: data,
     })
+    console.log(res.data)
     return res.data
 }
