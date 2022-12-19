@@ -47,8 +47,7 @@ const Subjects = () => {
           document.body.removeChild(link);
           URL.revokeObjectURL(href);
         });
-      };
-
+      }
     const subjectCols = [
         {header: "Nomi", accessor: (item)=> <Link to={`/subjects/${item.id}/teachers`}>{item.name}</Link>},
         {header: "Ma'ruza", accessor: "lecture"},

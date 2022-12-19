@@ -19,8 +19,6 @@ const Subjects = sequelize.define("subjects", {
     },
     presentation: {
         type: DataTypes.STRING,
-        name: String,
-        url:String,
         // allowNull: false
     },
     syllabus: {

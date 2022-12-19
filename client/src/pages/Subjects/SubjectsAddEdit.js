@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {useForm} from "react-hook-form"
 import {useParams, useNavigate} from "react-router-dom"
 import axios from "axios";
@@ -14,6 +14,7 @@ const SubjectsAddEdit = () => {
     const id = params.id
     const navigate = useNavigate()
     const isUpdate = params.id !=="new"
+    const [file, setFile] = useState()
     const {send: getSubjects} = useHttp(getAllSubjects)
     const {send: subjectsSubmit} = useHttp(submit)
 
@@ -42,6 +43,24 @@ const SubjectsAddEdit = () => {
         const byId = res.data.data.subjectById
         reset(byId)
     }
+    const fileHandler = async (e) => {
+        const files = e.target.files[0];
+        const formData = new FormData();
+        formData.append("avatar", files);
+    
+        try {
+          const res = await axios.post(
+            "http://localhost:8080/api/v1/subjects",
+            formData,
+            {
+              headers: {"Content-Type": "multipart/form-data"}
+            }
+          );
+          setFile(res.data.data.newAttachment)
+        } catch (error) {
+          toast.error(error?.response.data.message)
+        }
+      };
     return ( 
         <Layout title="Fanni qo'shish/o'zgartirish">
             <form onSubmit={handleSubmit(addSubjectHandler)}> 
@@ -54,8 +73,8 @@ const SubjectsAddEdit = () => {
                 {...register("lecture", {required: {value: true, message: "Ma'ruza kiritilmadi"}})}/>
                 <br/>
                 {errors.lecture&&<span className="error-text">{errors.lecture.message}</span>}
-                <br/>
-                <ImageForm/>
+                <input className={errors.name? "invalid": ""} type="file" onChange={fileHandler}
+                {...register("presentation", {required: {value: true}})}/>
                 <br/>
                 <input className={errors.name? "invalid": ""} type="text" placeholder="Sillabus"
                 {...register("syllabus", {required: {value: true, message: "Sillabus kiritilmadi"}})}/>

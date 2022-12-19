@@ -2,6 +2,7 @@ import http from "../../utils/axios-instance"
 
 export const getAllSubjects = async ({page, size}) => {
     const res = await http({url:"/subjects", params:{page, size}});
+    console.log(res);
     return {
         content: res.data.data.allSubjects.content, 
         pagination: res.data.data.allSubjects.pagination
@@ -20,6 +21,5 @@ export const submit = async ({data, isUpdate, id}) => {
         method: isUpdate ? "PATCH" : "POST",
         data: data,
     })
-    console.log(res.data)
     return res.data
 }
