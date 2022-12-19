@@ -9,7 +9,7 @@ const router = express.Router()
 router
     .route("/")
     .get(subjectController.getAllSubjects)
-    .post(upload.single("avatar"),subjectController.createSubject)
+    .post(upload.single("avatar"), subjectController.createSubject)
 router
     .route("/download")
     .get(reportController.exportSubjects)
