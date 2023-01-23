@@ -1,33 +1,32 @@
 import axios from "axios";
 import {useState} from "react"
+import { toast } from "react-toastify";
 
 const ImageForm = () => {
 
   const [file, setFile] = useState()  
-  const [progress, setProgress] = useState(0)  
   const submitHandler = async data => 
     ({
         ...data,
         attachmentId: file.id,
     })
-  const fileHandler = async (e, id) => {
+  const fileHandler = async (e) => {
     const file = e.target.files[0];
     const formData = new FormData();
     formData.append("avatar", file);
 
-    const res = await axios.post(
-      "http://localhost:8080/api/v1/attachments",
-      formData,
-      {
-        onUploadProgress: pr => {
-            setProgress(Math.trunc(pr.loaded/ (pr.total/100)))
-            console.log(pr);
+    try {
+      const res = await axios.post(
+        "http://localhost:8080/api/v1/subjects",
+        formData,
+        {
+          headers: {"Content-Type": "multipart/form-data"}
         }
-      }
-    );
-
-    setFile(res.data.data.newAttachment)
-    setProgress(0)
+      );
+      setFile(res.data.data.newAttachment)
+    } catch (error) {
+      toast.error(error?.response.data.message)
+    }
   };
   return (
     <>

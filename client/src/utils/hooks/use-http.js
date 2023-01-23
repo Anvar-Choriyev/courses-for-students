@@ -16,7 +16,6 @@ const useHttp = (reqFn) => {
             setData(res.content)
             setPagination(res.pagination)
             toast.success(data.message)
-            console.log(data);
         } catch (error) {
             setError("Error")
             toast.error(data.message)

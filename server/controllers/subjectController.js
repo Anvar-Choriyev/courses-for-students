@@ -38,7 +38,14 @@ exports.createSubject = catchAsync(async(req, res, next) => {
         err.isOperational = false
         return next(err)
     }
-    const newSubject = await Subjects.create(req.body)
+    createObj = {
+        name: req.body.name,
+        lecture: req.body.lecture,
+        presentation: req.file?.path,
+        syllabus: req.body.syllabus,
+        literature: req.body.literature
+    }
+    const newSubject = await Subjects.create(createObj)
     res.status(201).json({
         status: "success",
         message: "Subject created",
