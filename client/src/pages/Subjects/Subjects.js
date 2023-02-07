@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import Layout from "../../components/Layout"
 import "./Subjects.module.css"
-import Table from "../../components/Table"
+import TableForm from "../../components/Table"
 import Pagination from "../../components/Pagination"
 import styles from "./Subjects.module.css"
 import { deleteSubjectHandler } from "./subjects-api"
@@ -65,17 +65,20 @@ const Subjects = () => {
     return (
         <>
         <Layout title="Fanlar">
-        <div className={styles.container}>
-        <button onClick={getFile}>Download</button>
-        <Link to="/subjects/new">
-            Fan qo'shish
-        </Link>
-        {loading&&"Loading"}
-        {(!loading&&error)&&error}
-        {!error&&!loading&&data&&<Table cols={subjectCols} data={data}  />}
-        <Pagination route={`subjects`} pagination={pagination} size={size} page={page}
-            />
-        </div>
+          <div className={styles.container}>
+          <div className={styles.downloads}>
+          <Link className="btn btn-warning" to="/subjects/new">
+              Fan qo'shish
+          </Link>
+          <button onClick={getFile} className="btn btn-outline-success">Download</button>
+          
+          </div>
+          {loading&&"Loading"}
+          {(!loading&&error)&&error}
+          {!error&&!loading&&data&&<TableForm cols={subjectCols} data={data}  />}
+          {/* <Pagination route={`subjects`} pagination={pagination} size={size} page={page}
+              /> */}
+          </div>
         </Layout>
         </>
       );

@@ -1,8 +1,9 @@
 import styles from "./Table.module.css"
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
+import {Table} from 'antd'
 
-const Table = ({cols, data}) => {
+const TableForm = ({cols, data}) => {
     const [value, setValue] = useState()
     const navigate = useNavigate()
 
@@ -10,6 +11,14 @@ const Table = ({cols, data}) => {
         setValue(e.target.value)
     }
 
+    const columns=cols.map((item,index)=>(
+        {
+                title: item.header,
+                dataIndex: index,
+                key: item.header, 
+        }
+    ))
+    console.log(columns)
     const bodyContent = data.map(i => <tr key={i.id}>
         {cols.map((c,ind) => {
             let content;
@@ -24,23 +33,11 @@ const Table = ({cols, data}) => {
     </tr>)
 
     return ( 
-        <table>
-            <thead>
-                <tr>
-                    {cols.map(c=> <th
-                    key={c.header}>
-                        <div className={styles.header}>
-                            {c.header}
-                        </div>
-                            </th>
-                )}
-                </tr>
-            </thead>
-            <tbody>
-                {bodyContent}
-            </tbody>
-        </table>
+        <div className={styles.Tableform}>
+            <Table columns={columns} dataSource={data}></Table>
+        </div>  
+        
      );
 }
  
-export default Table;
+export default TableForm;

@@ -3,4 +3,13 @@
     justify-content: center;
     gap: 1rem;
     align-items: center;
+    width: 75%;
+}
+.Tableform{
+    width: 100% !important;
+    border: 1px solid green;
+}
+
+.Tableform table{
+    width: 1200px;
 }

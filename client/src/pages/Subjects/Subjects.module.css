@@ -8,3 +8,9 @@ table, td, th {
     cursor: pointer;
     color: rgb(13, 13, 56);
 }
+.downloads{
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
